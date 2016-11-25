@@ -1,9 +1,9 @@
 var wordBank = ["PARIS", "LONDON", "SYDNEY", "JOHANNESBURG", "XIANGHAI", "HIROSHIMA", "LAUSANNE", "DUSSELDORF", "ALEXANDRIA"];
 
 var thewrdarr = [];
+var letges = [];
 var thewrd;
 var usrinp;
-var letges;
 
 //COUNTER VARIABLES
 var winnum = 0;
@@ -22,6 +22,12 @@ var rndwrd = function() {
 	return thewrd
 };
 
+var reset = function() {
+	thewrdarr = [];
+	letges = [];
+	gesrem = 10;
+};
+
 //// When The Correct Letter Is Guessed This Function Pushes The Letter To The Array Created In rndwrd
 
 rndwrd();
@@ -32,6 +38,10 @@ document.onkeyup = function(event) {
   usrinp = event.key.toUpperCase();
 
   // while((thewrdarr.indexOf("_") <= 0) && gesrem > 0) {
+
+  	if(letges.indexOf(usrinp) === -1) {
+  		letges.push(usrinp); 
+  	}
   	if(thewrd.indexOf(usrinp) >= 0) {
 			for(var j = 0; j < thewrd.length; j++) {
 				if(thewrd[j] === usrinp) {
@@ -43,16 +53,15 @@ document.onkeyup = function(event) {
 			gesrem--;
 		};
 		if((thewrdarr.indexOf("_") === -1)) {
-			thewrdarr = [];
-			gesrem = 10;
+			reset();
 			winnum++;
 			rndwrd();
 		}
 		if(gesrem === 0) {
-			thewrdarr = [];
-			gesrem = 10;
+			reset();
 			rndwrd();
 		};
+		document.getElementById("letges").innerHTML = letges.join(" ");
 		document.getElementById("gesrem").innerHTML = gesrem;
 		document.getElementById("wins").innerHTML = winnum;
 
@@ -79,6 +88,7 @@ document.onkeyup = function(event) {
   return usrinp;
   return gesrem;
   return winnum;
+  return letges;
 
 
 };
