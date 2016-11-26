@@ -1,0 +1,24 @@
+body {
+	background-image: url("../images/bg-img.jpg");
+	background-repeat: no-repeat;
+	font-family: 'Holtwood One SC', serif;
+	text-align: center;
+	}
+
+.row, .jumbotron {
+	background: rgba(255, 255, 255, 0.5);
+}
+
+.row {
+	width: 50%;
+	margin: 0 auto;
+}
+
+h1 {
+	font-size: 1.4em;
+}
+
+h2 {
+	color: white;
+	font-size: 1.3em;
+}

@@ -2,24 +2,45 @@
 <html>
 <head>
 	<title>Hangman Game</title>
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Holtwood+One+SC" rel="stylesheet">
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 <body>
-	<h1>PRESS ANY KEY TO GET STARTED!</h1>
-	<br/>
-	<h1>WINS</h1>
-	<p id="wins"></p>
-	<h1>CURRENT WORD</h1>
-	<br/>
-	<p id="crntwrd"></p>
-	<br/>
-	<h1>NUMBER OF GUESSES REMAINING</h1>
-	<br/>
-	<p id="gesrem">10</p>
-	<br/>
-	<h1>LETTERS ALREADY GUESSED</h1>
-	<br/>
-	<p id="letges"></p>
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Hanging Around the World</h1>
+		  <p>Let's take a trip</p>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<h1>PRESS ANY KEY TO GET STARTED!</h1>
+		</div>
+		<div class="row">
+			<h1>LAST CORRECT CITY</h1>
+			<h2 id="lstwrd"></h2>
+		</div>
+		<div class="row">
+			<h1>WINS</h1>
+			<h2 id="wins"></h2>
+		</div>
+		<div class="row">
+			<h1>CURRENT WORD</h1>
+			<h2 id="crntwrd"></h2>
+		</div>
+		<div class="row">
+			<h1>NUMBER OF GUESSES REMAINING</h1>
+			<h2 id="gesrem">10</h2>
+		</div>
+		<div class="row">
+			<h1>LETTERS ALREADY GUESSED</h1>
+			<h2 id="letges"></h2>
+		</div>
+	</div>
 
 	<script type="text/javascript" src="assets/javascript/hangman.js"></script>
 </body>

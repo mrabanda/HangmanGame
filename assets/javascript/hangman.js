@@ -1,18 +1,28 @@
-var wordBank = ["PARIS", "LONDON", "SYDNEY", "JOHANNESBURG", "XIANGHAI", "HIROSHIMA", "LAUSANNE", "DUSSELDORF", "ALEXANDRIA"];
+var wordBank = ["PARIS", "LONDON", "SYDNEY", "JOHANNESBURG", "XIANGHAI", "HIROSHIMA", "LAUSANNE", "DUSSELDORF", "ALEXANDRIA", "JERUSALEM", "ISTANBUL", "AMSTERDAM", "BUDAPEST", "SINGAPORE", "MONTREAL", "TRONTO", "MUMBAI", "SHANGHAI", "BANGKOK", "COPENHAGEN", "NAIROBI"];
 
-var thewrdarr = [];
-var letges = [];
+//Stores random word
 var thewrd;
+
+//Stores word in array
+var thewrdarr = [];
+
+//Stores letters already guessed
+var letges = [];
+
+//Stores user input from key event
 var usrinp;
 
-//COUNTER VARIABLES
+//COUNTER VARIABLES//
+
+//Counts # of times word is guessed
 var winnum = 0;
+//Counts # of guesses remaining
 var gesrem = 10;
 
 
-// GLOBAL FUNCTIONS
+// GLOBAL FUNCTIONS //
 
-//// Choses Word Randomly From wrdBank Then Pushes '_' To An Array Based On Length Of Word Selected
+// Choses Word Randomly From wrdBank Then Pushes '_' To An Array Based On Length Of Word Selected
 var rndwrd = function() {
 	thewrd = wordBank[Math.floor(Math.random () * wordBank.length)];
 	for(var i = 0; i < thewrd.length; i++) {
@@ -22,13 +32,17 @@ var rndwrd = function() {
 	return thewrd
 };
 
+//Resets variables to default and calls on rndwrd function to choose new word
 var reset = function() {
 	thewrdarr = [];
 	letges = [];
 	gesrem = 10;
+	document.getElementById("gesrem").innerHTML = gesrem;
+	document.getElementById("letges").innerHTML = letges;
+	rndwrd();
 };
 
-//// When The Correct Letter Is Guessed This Function Pushes The Letter To The Array Created In rndwrd
+//
 
 rndwrd();
 
@@ -37,54 +51,51 @@ document.onkeyup = function(event) {
   // Captures the key press, converts it to uppercase, and saves it to a variable.
   usrinp = event.key.toUpperCase();
 
-  // while((thewrdarr.indexOf("_") <= 0) && gesrem > 0) {
+ 	//Pushes user input to array for guessed letters only if it hasn't been guessed already
 
-  	if(letges.indexOf(usrinp) === -1) {
-  		letges.push(usrinp); 
-  	}
-  	if(thewrd.indexOf(usrinp) >= 0) {
-			for(var j = 0; j < thewrd.length; j++) {
-				if(thewrd[j] === usrinp) {
-					thewrdarr[j] = usrinp;
-					document.getElementById("crntwrd").innerHTML = thewrdarr.join(" ");
-				}
-			}
-		} else {
-			gesrem--;
-		};
-		if((thewrdarr.indexOf("_") === -1)) {
-			reset();
-			winnum++;
-			rndwrd();
-		}
-		if(gesrem === 0) {
-			reset();
-			rndwrd();
-		};
+	if(letges.indexOf(usrinp) === -1) {
+		letges.push(usrinp);
 		document.getElementById("letges").innerHTML = letges.join(" ");
+	};
+
+	//Checks if user input exists in thewrd and pushes input to the corresponding index in thewrdarr
+
+	if(thewrd.indexOf(usrinp) >= 0) {
+		for(var j = 0; j < thewrd.length; j++) {
+			if(thewrd[j] === usrinp) {
+				thewrdarr[j] = usrinp;
+				document.getElementById("crntwrd").innerHTML = thewrdarr.join(" ");
+			};
+		};
+
+		// If input doesn't exist in thewrd subtract 1 from guesses remaining
+
+	} else {
+		gesrem--;
 		document.getElementById("gesrem").innerHTML = gesrem;
+	};
+
+	//Checks if "_" does not exist in thewrdarr (meaning the user has guessed all leteers and wins the game). Add 1 to # of wins. Resets the game.
+
+	if((thewrdarr.indexOf("_") === -1)) {
+		winnum++;
 		document.getElementById("wins").innerHTML = winnum;
+		document.getElementById("lstwrd").innerHTML = thewrd;
+		reset();
+	};
 
+	//Checks if there are no guesses remaining and resets the game
 
+	if(gesrem === 0) {
+		reset();
+	};
 
+	//Prints variables to document
 
+	
+	
+	
 
-
-		// } else {
-		// 	if((thewrdarr.indexOf("_") >= 0) && gesrem > 0) {
-		// 		gesrem--;
-		// 		document.getElementById("gesrem").innerHTML = gesrem;				
-		// 	};
-		// };
-		// if((thewrdarr.indexOf("_") < 0)) {
-		// 	gesrem = 10;
-		// 	winnum++;
-		// 	rndwrd();
-		// };
-		// if(gesrem = 0) {
-		// 	gesrem = 10;
-		// 	rndwrd();
-		// };
   return usrinp;
   return gesrem;
   return winnum;
