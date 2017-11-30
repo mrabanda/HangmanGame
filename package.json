@@ -1,0 +1,24 @@
+{
+  "name": "HangmanGame",
+  "version": "1.0.0",
+  "description": "You get ten attempts to guess the name of a famous city around the world.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrabanda/HangmanGame.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrabanda/HangmanGame/issues"
+  },
+  "homepage": "https://github.com/mrabanda/HangmanGame#readme",
+  "devDependencies": {
+    "eslint": "^4.12.0",
+    "eslint-plugin-react": "^7.5.1"
+  }
+}
